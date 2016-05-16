@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 20141023214703) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "performances", force: true do |t|
+  create_table "performances", force: :cascade do |t|
     t.integer  "show_id"
     t.date     "performed_on"
     t.datetime "created_at"
@@ -25,19 +25,19 @@ ActiveRecord::Schema.define(version: 20141023214703) do
 
   add_index "performances", ["show_id"], name: "index_performances_on_show_id", using: :btree
 
-  create_table "performers", force: true do |t|
-    t.string   "name"
-    t.string   "description"
+  create_table "performers", force: :cascade do |t|
+    t.string   "name",        limit: 255
+    t.string   "description", limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "performers_shows", id: false, force: true do |t|
+  create_table "performers_shows", id: false, force: :cascade do |t|
     t.integer "performer_id"
     t.integer "show_id"
   end
 
-  create_table "reviews", force: true do |t|
+  create_table "reviews", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "performance_id"
     t.integer  "rating"
@@ -49,23 +49,23 @@ ActiveRecord::Schema.define(version: 20141023214703) do
   add_index "reviews", ["performance_id"], name: "index_reviews_on_performance_id", using: :btree
   add_index "reviews", ["user_id"], name: "index_reviews_on_user_id", using: :btree
 
-  create_table "shows", force: true do |t|
-    t.string   "name"
-    t.string   "description"
+  create_table "shows", force: :cascade do |t|
+    t.string   "name",            limit: 255
+    t.string   "description",     limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "year"
-    t.string   "director"
-    t.string   "location"
-    t.string   "theatre_company"
+    t.string   "director",        limit: 255
+    t.string   "location",        limit: 255
+    t.string   "theatre_company", limit: 255
     t.text     "notes"
   end
 
-  create_table "users", force: true do |t|
-    t.string   "name"
-    t.string   "username"
-    t.string   "password"
-    t.string   "profile_img_url"
+  create_table "users", force: :cascade do |t|
+    t.string   "name",            limit: 255
+    t.string   "username",        limit: 255
+    t.string   "password",        limit: 255
+    t.string   "profile_img_url", limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end

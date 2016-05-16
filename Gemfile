@@ -14,14 +14,14 @@ gem 'newrelic_rpm'
 gem 'figaro'
 gem 'rails_12factor'
 gem 'actionpack'
+gem 'factory_girl_rails'
+gem 'faker'
 
 
 group :development, :test do
   gem 'foreman'
   gem 'rspec-rails', '~> 3.0.0'
-  gem 'factory_girl_rails'
   gem 'shoulda'
-  gem 'faker'
   gem 'ruby-progressbar'
   gem 'pry'
   gem 'rspec-collection_matchers'
